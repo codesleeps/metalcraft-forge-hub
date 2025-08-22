@@ -70,8 +70,7 @@ const ProductShowcase = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Ready to
-            <span className="text-transparent bg-gradient-copper bg-clip-text"> Order</span>
+            Ready to Order
           </h2>
           <p className="text-xl text-muted-foreground">
             Every piece we create combines traditional craftsmanship with modern engineering. 
@@ -92,12 +91,12 @@ const ProductShowcase = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-steel-dark/60 to-transparent"></div>
                 <div className="absolute top-4 left-4">
-                  <div className="bg-copper/90 p-3 rounded-lg">
+                  <div className="bg-primary/90 p-3 rounded-lg">
                     <product.icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
                 <div className="absolute bottom-4 right-4">
-                  <span className="bg-steel-dark/90 text-copper px-3 py-1 rounded-lg font-semibold text-lg">
+                  <span className="bg-steel-dark/90 text-white px-3 py-1 rounded-lg font-semibold text-lg">
                     {product.price}
                   </span>
                 </div>
@@ -116,13 +115,13 @@ const ProductShowcase = () => {
                 <ul className="space-y-2 mb-6">
                   {product.features.map((feature, index) => (
                     <li key={index} className="flex items-center text-sm text-muted-foreground">
-                      <div className="w-1.5 h-1.5 bg-copper rounded-full mr-3"></div>
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></div>
                       {feature}
                     </li>
                   ))}
                 </ul>
 
-                <Button variant="forge" className="w-full group">
+                <Button variant="default" className="w-full group">
                   Request Quote
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -133,15 +132,15 @@ const ProductShowcase = () => {
 
         {/* CTA Section */}
         <div className="text-center mt-16">
-          <div className="bg-gradient-steel rounded-2xl p-8 md:p-12 text-center">
-            <h3 className="text-3xl font-bold text-white mb-4">
+          <div className="bg-primary rounded-2xl p-8 md:p-12 text-center">
+            <h3 className="text-3xl font-bold text-primary-foreground mb-4">
               Need Something Custom?
             </h3>
-            <p className="text-steel-light mb-8 max-w-2xl mx-auto">
+            <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
               We specialize in bringing your unique metalwork visions to life. 
               From concept to completion, we'll work with you every step of the way.
             </p>
-            <Button variant="fire" size="xl">
+            <Button variant="secondary" size="xl">
               Start Custom Project
             </Button>
           </div>

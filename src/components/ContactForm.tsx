@@ -74,8 +74,7 @@ const ContactForm = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Ready to
-            <span className="text-transparent bg-gradient-copper bg-clip-text"> Order?</span>
+            Ready to Order?
           </h2>
           <p className="text-xl text-muted-foreground">
             Get a free quote for your custom metalwork project. We'll work with you to bring your vision to life.
@@ -184,7 +183,7 @@ const ContactForm = () => {
                 />
               </div>
 
-              <Button type="submit" variant="fire" size="xl" className="w-full">
+              <Button type="submit" variant="default" size="xl" className="w-full">
                 Send Quote Request
               </Button>
             </form>
@@ -192,9 +191,9 @@ const ContactForm = () => {
 
           {/* Contact Information */}
           <div className="space-y-8">
-            <div className="bg-gradient-steel rounded-2xl p-8 text-white">
+            <div className="bg-primary rounded-2xl p-8 text-white">
               <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
-              <p className="text-steel-light mb-8">
+              <p className="text-primary-foreground/80 mb-8">
                 Have questions? We're here to help. Reach out using any of the methods below 
                 or stop by our workshop to see our craftsmanship firsthand.
               </p>
@@ -202,13 +201,13 @@ const ContactForm = () => {
               <div className="space-y-6">
                 {contactInfo.map((item, index) => (
                   <div key={index} className="flex items-start space-x-4">
-                    <div className="bg-copper/20 p-3 rounded-lg">
-                      <item.icon className="h-5 w-5 text-copper" />
+                    <div className="bg-white/10 p-3 rounded-lg">
+                      <item.icon className="h-5 w-5 text-white" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-white mb-1">{item.title}</h4>
                       {item.details.map((detail, idx) => (
-                        <p key={idx} className="text-steel-light text-sm">{detail}</p>
+                        <p key={idx} className="text-primary-foreground/70 text-sm">{detail}</p>
                       ))}
                     </div>
                   </div>
@@ -217,12 +216,12 @@ const ContactForm = () => {
             </div>
 
             {/* Emergency Contact */}
-            <Card className="p-6 border-2 border-fire-orange/20 bg-fire-orange/5">
+            <Card className="p-6 border-2 border-primary/20 bg-primary/5">
               <h4 className="text-xl font-bold text-foreground mb-3">Emergency Repairs</h4>
               <p className="text-muted-foreground mb-4">
                 Gate won't close? Fencing damaged? We offer 24/7 emergency repair services.
               </p>
-              <Button variant="fire" className="w-full">
+              <Button variant="default" className="w-full">
                 Call Emergency Line: (555) 911-WELD
               </Button>
             </Card>

@@ -19,9 +19,9 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="relative">
-              <Flame className="h-8 w-8 text-copper animate-forge-glow" />
+              <Flame className="h-8 w-8 text-primary animate-forge-glow" />
               <div className="absolute inset-0 blur-sm">
-                <Flame className="h-8 w-8 text-fire-orange opacity-50" />
+                <Flame className="h-8 w-8 text-primary opacity-50" />
               </div>
             </div>
             <div>
@@ -36,12 +36,12 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-copper transition-colors font-medium"
+                className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 {item.name}
               </a>
             ))}
-            <Button variant="copper" size="lg">
+            <Button variant="default" size="lg">
               Get Quote
             </Button>
           </div>
@@ -67,13 +67,13 @@ const Header = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block text-foreground hover:text-copper transition-colors font-medium py-2"
+                  className="block text-foreground hover:text-primary transition-colors font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
-              <Button variant="copper" className="w-full mt-4">
+              <Button variant="default" className="w-full mt-4">
                 Get Quote
               </Button>
             </div>
