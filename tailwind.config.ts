@@ -52,6 +52,19 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				/* Industrial Color Tokens */
+				steel: {
+					dark: 'hsl(var(--steel-dark))',
+					medium: 'hsl(var(--steel-medium))',
+					light: 'hsl(var(--steel-light))'
+				},
+				copper: {
+					DEFAULT: 'hsl(var(--copper))',
+					dark: 'hsl(var(--copper-dark))'
+				},
+				fire: {
+					orange: 'hsl(var(--fire-orange))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -84,11 +97,42 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'forge-glow': {
+					'0%, 100%': {
+						opacity: '1',
+						filter: 'brightness(1)'
+					},
+					'50%': {
+						opacity: '0.8',
+						filter: 'brightness(1.2)'
+					}
+				},
+				'metal-slide': {
+					'0%': {
+						transform: 'translateX(-100%)'
+					},
+					'100%': {
+						transform: 'translateX(100%)'
+					}
+				},
+				'spark': {
+					'0%': {
+						transform: 'scale(0) rotate(0deg)',
+						opacity: '1'
+					},
+					'100%': {
+						transform: 'scale(1) rotate(180deg)',
+						opacity: '0'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'forge-glow': 'forge-glow 3s ease-in-out infinite',
+				'metal-slide': 'metal-slide 0.8s ease-in-out',
+				'spark': 'spark 1.2s ease-out infinite'
 			}
 		}
 	},
