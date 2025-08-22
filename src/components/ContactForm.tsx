@@ -7,7 +7,6 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/useAuth";
-import { supabase } from "@/lib/supabase";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 const ContactForm = () => {
@@ -27,23 +26,29 @@ const ContactForm = () => {
     e.preventDefault();
     
     try {
-      // If user is logged in, save to database
+      // If user is logged in and Supabase is available, save to database
       if (user) {
-        const { error } = await supabase
-          .from('quotes')
-          .insert({
-            user_id: user.id,
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            project_type: formData.projectType,
-            budget: formData.budget,
-            message: formData.message,
-            timeline: formData.timeline,
-            status: 'pending'
-          });
+        try {
+          const { supabase } = await import('@/lib/supabase');
+          const { error } = await supabase
+            .from('quotes')
+            .insert({
+              user_id: user.id,
+              name: formData.name,
+              email: formData.email,
+              phone: formData.phone,
+              project_type: formData.projectType,
+              budget: formData.budget,
+              message: formData.message,
+              timeline: formData.timeline,
+              status: 'pending'
+            });
 
-        if (error) throw error;
+          if (error) throw error;
+        } catch (dbError) {
+          console.warn('Could not save to database:', dbError);
+          // Continue with success message even if DB save fails
+        }
       }
 
       toast({

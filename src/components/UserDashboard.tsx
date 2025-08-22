@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/lib/supabase";
 import { User, Settings, Package, MessageSquare, LogOut, Flame } from "lucide-react";
 
 const UserDashboard = () => {
@@ -29,7 +28,10 @@ const UserDashboard = () => {
   }, [user]);
 
   const fetchQuotes = async () => {
+    if (!user) return;
+    
     try {
+      const { supabase } = await import('@/lib/supabase');
       const { data, error } = await supabase
         .from('quotes')
         .select('*')
@@ -39,7 +41,7 @@ const UserDashboard = () => {
       if (error) throw error;
       setQuotes(data || []);
     } catch (error) {
-      console.error('Error fetching quotes:', error);
+      console.warn('Error fetching quotes:', error);
     }
   };
 
@@ -62,6 +64,7 @@ const UserDashboard = () => {
   const updateProfile = async () => {
     setLoading(true);
     try {
+      const { supabase } = await import('@/lib/supabase');
       const { error } = await supabase.auth.updateUser({
         data: {
           full_name: profile.fullName,

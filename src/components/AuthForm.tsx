@@ -5,8 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/lib/supabase";
-import { Loader2, UserPlus, LogIn, Flame } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { Loader2, UserPlus, LogIn, Flame, AlertCircle } from "lucide-react";
 
 interface AuthFormProps {
   onClose?: () => void;
@@ -14,6 +14,7 @@ interface AuthFormProps {
 
 const AuthForm = ({ onClose }: AuthFormProps) => {
   const { toast } = useToast();
+  const { isSupabaseAvailable } = useAuth();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -29,6 +30,15 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!isSupabaseAvailable) {
+      toast({
+        title: "Service Unavailable",
+        description: "Authentication service is currently unavailable. Please try again later.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     if (formData.password !== formData.confirmPassword) {
       toast({
         title: "Error",
@@ -50,6 +60,7 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
     setLoading(true);
     
     try {
+      const { supabase } = await import('@/lib/supabase');
       const { error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
@@ -81,9 +92,20 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!isSupabaseAvailable) {
+      toast({
+        title: "Service Unavailable",
+        description: "Authentication service is currently unavailable. Please try again later.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setLoading(true);
     
     try {
+      const { supabase } = await import('@/lib/supabase');
       const { error } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password,
@@ -128,13 +150,24 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
           <p className="text-muted-foreground">Access your welding projects</p>
         </div>
 
+        {!isSupabaseAvailable && (
+          <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <div className="flex items-center space-x-2 text-yellow-800">
+              <AlertCircle className="h-5 w-5" />
+              <p className="text-sm font-medium">
+                Authentication service is being configured. Please try again in a moment.
+              </p>
+            </div>
+          </div>
+        )}
+
         <Tabs defaultValue="signin" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="signin" className="flex items-center gap-2">
+            <TabsTrigger value="signin" className="flex items-center gap-2" disabled={!isSupabaseAvailable}>
               <LogIn className="h-4 w-4" />
               Sign In
             </TabsTrigger>
-            <TabsTrigger value="signup" className="flex items-center gap-2">
+            <TabsTrigger value="signup" className="flex items-center gap-2" disabled={!isSupabaseAvailable}>
               <UserPlus className="h-4 w-4" />
               Sign Up
             </TabsTrigger>
@@ -151,6 +184,7 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   required
                   placeholder="your@email.com"
+                  disabled={!isSupabaseAvailable}
                 />
               </div>
               
@@ -163,10 +197,11 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
                   onChange={(e) => handleInputChange("password", e.target.value)}
                   required
                   placeholder="••••••••"
+                  disabled={!isSupabaseAvailable}
                 />
               </div>
 
-              <Button type="submit" className="w-full" disabled={loading}>
+              <Button type="submit" className="w-full" disabled={loading || !isSupabaseAvailable}>
                 {loading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -193,6 +228,7 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
                   onChange={(e) => handleInputChange("fullName", e.target.value)}
                   required
                   placeholder="Your full name"
+                  disabled={!isSupabaseAvailable}
                 />
               </div>
 
@@ -205,6 +241,7 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   required
                   placeholder="your@email.com"
+                  disabled={!isSupabaseAvailable}
                 />
               </div>
               
@@ -217,6 +254,7 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
                   onChange={(e) => handleInputChange("password", e.target.value)}
                   required
                   placeholder="Minimum 6 characters"
+                  disabled={!isSupabaseAvailable}
                 />
               </div>
 
@@ -229,10 +267,11 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
                   onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
                   required
                   placeholder="Confirm your password"
+                  disabled={!isSupabaseAvailable}
                 />
               </div>
 
-              <Button type="submit" className="w-full" disabled={loading}>
+              <Button type="submit" className="w-full" disabled={loading || !isSupabaseAvailable}>
                 {loading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
