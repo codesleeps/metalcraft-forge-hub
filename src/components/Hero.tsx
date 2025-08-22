@@ -19,7 +19,7 @@ const Hero = () => {
           <div className="space-y-6">
             <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
               Master
-              <span className="text-transparent bg-gradient-copper bg-clip-text"> Metalcraft</span>
+              <span className="text-transparent bg-gradient-copper bg-clip-text"> Welders</span>
               <br />
               Built to Last
             </h1>

@@ -75,7 +75,7 @@ const ContactForm = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Ready to
-            <span className="text-transparent bg-gradient-copper bg-clip-text"> Start Forging?</span>
+            <span className="text-transparent bg-gradient-copper bg-clip-text"> Order?</span>
           </h2>
           <p className="text-xl text-muted-foreground">
             Get a free quote for your custom metalwork project. We'll work with you to bring your vision to life.
