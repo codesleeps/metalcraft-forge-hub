@@ -6,13 +6,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/lib/supabase";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const { user } = useAuth();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    name: user?.user_metadata?.full_name || "",
+    email: user?.email || "",
     phone: "",
     projectType: "",
     budget: "",
@@ -20,25 +23,53 @@ const ContactForm = () => {
     timeline: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Here you would normally send the data to your backend
-    toast({
-      title: "Quote Request Sent!",
-      description: "We'll get back to you within 24 hours with a detailed estimate.",
-    });
+    try {
+      // If user is logged in, save to database
+      if (user) {
+        const { error } = await supabase
+          .from('quotes')
+          .insert({
+            user_id: user.id,
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            project_type: formData.projectType,
+            budget: formData.budget,
+            message: formData.message,
+            timeline: formData.timeline,
+            status: 'pending'
+          });
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      projectType: "",
-      budget: "",
-      message: "",
-      timeline: ""
-    });
+        if (error) throw error;
+      }
+
+      toast({
+        title: "Quote Request Sent!",
+        description: user 
+          ? "Your request has been saved to your dashboard. We'll get back to you within 24 hours."
+          : "We'll get back to you within 24 hours with a detailed estimate.",
+      });
+
+      // Reset form
+      setFormData({
+        name: user?.user_metadata?.full_name || "",
+        email: user?.email || "",
+        phone: "",
+        projectType: "",
+        budget: "",
+        message: "",
+        timeline: ""
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send quote request. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
