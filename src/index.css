@@ -47,16 +47,19 @@ All colors MUST be HSL.
     --yellow-dark: 50 100% 40%;
     --black: 0 0% 8%;
 
-    /* Gradients */
-    --gradient-green: linear-gradient(135deg, hsl(120 100% 20%), hsl(120 80% 30%));
-    --gradient-yellow: linear-gradient(135deg, hsl(60 100% 50%), hsl(50 100% 40%));
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 8%) 0%, hsl(120 100% 20%) 50%, hsl(60 100% 50%) 100%);
-    --gradient-metal-shine: linear-gradient(90deg, transparent, hsla(60 100% 50% / 0.4), transparent);
+    /* Gradients - Green to Yellow Mix */
+    --gradient-green: linear-gradient(135deg, hsl(120 100% 25%), hsl(90 100% 35%));
+    --gradient-yellow: linear-gradient(135deg, hsl(60 100% 50%), hsl(45 100% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(120 100% 20%) 0%, hsl(90 100% 40%) 50%, hsl(60 100% 50%) 100%);
+    --gradient-primary: linear-gradient(45deg, hsl(120 100% 30%), hsl(60 100% 50%));
+    --gradient-secondary: linear-gradient(135deg, hsl(60 100% 50%), hsl(120 80% 40%));
+    --gradient-card: linear-gradient(180deg, hsl(120 60% 95%), hsl(60 30% 95%));
+    --gradient-metal-shine: linear-gradient(90deg, transparent, hsla(90 100% 50% / 0.4), transparent);
 
     /* Shadows */
     --shadow-green: 0 10px 30px -5px hsl(120 100% 20% / 0.4);
     --shadow-yellow: 0 10px 30px -5px hsl(60 100% 50% / 0.5);
-    --shadow-glow: 0 0 40px hsl(60 100% 50% / 0.5);
+    --shadow-glow: 0 0 40px hsl(90 100% 45% / 0.6);
 
     /* Animation */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -130,7 +133,7 @@ All colors MUST be HSL.
   }
 }
 
-/* Green Black Yellow Utility Classes */
+/* Green Yellow Gradient Utility Classes */
 @layer utilities {
   .bg-gradient-green {
     background: var(--gradient-green);
@@ -142,6 +145,18 @@ All colors MUST be HSL.
   
   .bg-gradient-hero {
     background: var(--gradient-hero);
+  }
+  
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .bg-gradient-card {
+    background: var(--gradient-card);
   }
   
   .shadow-green {

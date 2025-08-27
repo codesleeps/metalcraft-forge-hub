@@ -18,11 +18,12 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        /* Green Black Yellow Variants */
-        forge: "bg-gradient-green text-primary-foreground hover:shadow-green metal-shine",
-        yellow: "bg-gradient-yellow text-primary-foreground hover:shadow-yellow metal-shine",
-        green: "bg-green-dark text-green-light border-2 border-green-medium hover:bg-green-medium hover:border-yellow transition-forge",
-        glow: "bg-yellow text-black hover:bg-yellow-dark hover:shadow-glow animate-forge-glow",
+        /* Green Yellow Gradient Variants */
+        forge: "bg-gradient-primary text-white hover:shadow-glow metal-shine",
+        yellow: "bg-gradient-yellow text-black hover:shadow-yellow metal-shine",
+        green: "bg-gradient-green text-white hover:shadow-green metal-shine",
+        glow: "bg-gradient-secondary text-black hover:shadow-glow animate-forge-glow",
+        primary: "bg-gradient-primary text-white hover:bg-gradient-secondary transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",

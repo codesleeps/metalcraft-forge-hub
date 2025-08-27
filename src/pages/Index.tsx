@@ -14,7 +14,7 @@ const Index = () => {
       <ContactForm />
       
       {/* Footer */}
-      <footer className="bg-green-dark text-green-light py-12">
+      <footer className="bg-gradient-green text-white py-12">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
@@ -27,10 +27,10 @@ const Index = () => {
             <div>
               <h4 className="font-semibold text-white mb-4">Quick Links</h4>
               <div className="space-y-2">
-                <a href="#home" className="block hover:text-yellow transition-colors">Home</a>
-                <a href="#products" className="block hover:text-yellow transition-colors">Products</a>
-                <a href="#gallery" className="block hover:text-yellow transition-colors">Gallery</a>
-                <a href="#contact" className="block hover:text-yellow transition-colors">Contact</a>
+                <a href="#home" className="block hover:text-yellow-dark transition-colors">Home</a>
+                <a href="#products" className="block hover:text-yellow-dark transition-colors">Products</a>
+                <a href="#gallery" className="block hover:text-yellow-dark transition-colors">Gallery</a>
+                <a href="#contact" className="block hover:text-yellow-dark transition-colors">Contact</a>
               </div>
             </div>
             <div>
@@ -44,7 +44,7 @@ const Index = () => {
               </div>
             </div>
           </div>
-          <div className="border-t border-green-medium/50 mt-8 pt-8 text-center text-sm">
+          <div className="border-t border-yellow/30 mt-8 pt-8 text-center text-sm">
             <p>&copy; 2024 MetalCraft Forge. All rights reserved. Built with precision and pride.</p>
           </div>
         </div>

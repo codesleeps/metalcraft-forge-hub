@@ -65,7 +65,7 @@ const ProductShowcase = () => {
   ];
 
   return (
-    <section id="products" className="py-20 bg-muted/30">
+    <section id="products" className="py-20 bg-gradient-card">
       <div className="container mx-auto px-4 lg:px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -89,14 +89,14 @@ const ProductShowcase = () => {
                   alt={product.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-green-dark/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-green-dark/80 to-transparent"></div>
                 <div className="absolute top-4 left-4">
-                  <div className="bg-primary/90 p-3 rounded-lg">
+                  <div className="bg-gradient-primary p-3 rounded-lg shadow-glow">
                     <product.icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
                 <div className="absolute bottom-4 right-4">
-                  <span className="bg-yellow/90 text-black px-3 py-1 rounded-lg font-semibold text-lg">
+                  <span className="bg-gradient-secondary text-black px-3 py-1 rounded-lg font-semibold text-lg shadow-yellow">
                     {product.price}
                   </span>
                 </div>
@@ -121,7 +121,7 @@ const ProductShowcase = () => {
                   ))}
                 </ul>
 
-                <Button variant="glow" className="w-full group">
+                <Button variant="primary" className="w-full group">
                   <a href="#contact">Request Quote</a>
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -132,15 +132,15 @@ const ProductShowcase = () => {
 
         {/* CTA Section */}
         <div className="text-center mt-16">
-          <div className="bg-primary rounded-2xl p-8 md:p-12 text-center">
-            <h3 className="text-3xl font-bold text-primary-foreground mb-4">
+          <div className="bg-gradient-primary rounded-2xl p-8 md:p-12 text-center shadow-glow">
+            <h3 className="text-3xl font-bold text-white mb-4">
               Need Something Custom?
             </h3>
-            <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
+            <p className="text-white/90 mb-8 max-w-2xl mx-auto">
               We specialize in bringing your unique metalwork visions to life. 
               From concept to completion, we'll work with you every step of the way.
             </p>
-            <Button variant="secondary" size="xl">
+            <Button variant="yellow" size="xl">
               <a href="#contact">Start Custom Project</a>
             </Button>
           </div>
