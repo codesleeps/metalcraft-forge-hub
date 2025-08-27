@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === "development" ? "/" : "/metalcraft-forge-hub/", // Use '/' for local dev, subpath for production
+  base: "/", // Use root path for GitHub Pages
   server: {
     host: "::",
     port: 8080,
