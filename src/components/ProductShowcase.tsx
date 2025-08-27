@@ -89,14 +89,14 @@ const ProductShowcase = () => {
                   alt={product.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-green-dark/70 to-transparent"></div>
                 <div className="absolute top-4 left-4">
                   <div className="bg-primary/90 p-3 rounded-lg">
                     <product.icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
                 <div className="absolute bottom-4 right-4">
-                  <span className="bg-black/90 text-white px-3 py-1 rounded-lg font-semibold text-lg">
+                  <span className="bg-yellow/90 text-black px-3 py-1 rounded-lg font-semibold text-lg">
                     {product.price}
                   </span>
                 </div>
@@ -121,7 +121,7 @@ const ProductShowcase = () => {
                   ))}
                 </ul>
 
-                <Button variant="default" className="w-full group">
+                <Button variant="glow" className="w-full group">
                   <a href="#contact">Request Quote</a>
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>

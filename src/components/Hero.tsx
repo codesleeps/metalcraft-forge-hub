@@ -10,7 +10,7 @@ const Hero = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroWelding})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-green-dark/95 via-green-dark/80 to-transparent"></div>
       </div>
 
       {/* Content */}
@@ -29,13 +29,13 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-8">
-              <Button variant="default" size="xl" className="group">
+              <Button variant="glow" size="xl" className="group">
                 <a href="#products" className="flex items-center">
                   View Our Work
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
-              <Button variant="outline" size="xl">
+              <Button variant="green" size="xl">
                 <a href="#contact">Get Custom Quote</a>
               </Button>
             </div>
