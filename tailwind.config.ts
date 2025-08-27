@@ -52,18 +52,18 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				/* Industrial Color Tokens */
-				steel: {
-					dark: 'hsl(var(--steel-dark))',
-					medium: 'hsl(var(--steel-medium))',
-					light: 'hsl(var(--steel-light))'
+				/* Green Black Yellow Color Tokens */
+				green: {
+					dark: 'hsl(var(--green-dark))',
+					medium: 'hsl(var(--green-medium))',
+					light: 'hsl(var(--green-light))'
 				},
-				copper: {
-					DEFAULT: 'hsl(var(--copper))',
-					dark: 'hsl(var(--copper-dark))'
+				yellow: {
+					DEFAULT: 'hsl(var(--yellow))',
+					dark: 'hsl(var(--yellow-dark))'
 				},
-				fire: {
-					orange: 'hsl(var(--fire-orange))'
+				black: {
+					DEFAULT: 'hsl(var(--black))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',

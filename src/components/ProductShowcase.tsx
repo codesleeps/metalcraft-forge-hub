@@ -81,7 +81,7 @@ const ProductShowcase = () => {
         {/* Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8">
           {products.map((product) => (
-            <Card key={product.id} className="group overflow-hidden hover:shadow-steel transition-all duration-500">
+            <Card key={product.id} className="group overflow-hidden hover:shadow-glow transition-all duration-500">
               {/* Product Image */}
               <div className="relative h-64 overflow-hidden">
                 <img 
@@ -89,14 +89,14 @@ const ProductShowcase = () => {
                   alt={product.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-steel-dark/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute top-4 left-4">
                   <div className="bg-primary/90 p-3 rounded-lg">
                     <product.icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
                 <div className="absolute bottom-4 right-4">
-                  <span className="bg-steel-dark/90 text-white px-3 py-1 rounded-lg font-semibold text-lg">
+                  <span className="bg-black/90 text-white px-3 py-1 rounded-lg font-semibold text-lg">
                     {product.price}
                   </span>
                 </div>
@@ -122,7 +122,7 @@ const ProductShowcase = () => {
                 </ul>
 
                 <Button variant="default" className="w-full group">
-                  Request Quote
+                  <a href="#contact">Request Quote</a>
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>
@@ -141,7 +141,7 @@ const ProductShowcase = () => {
               From concept to completion, we'll work with you every step of the way.
             </p>
             <Button variant="secondary" size="xl">
-              Start Custom Project
+              <a href="#contact">Start Custom Project</a>
             </Button>
           </div>
         </div>

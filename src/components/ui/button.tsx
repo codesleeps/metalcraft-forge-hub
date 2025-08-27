@@ -18,11 +18,11 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        /* Industrial Variants */
-        forge: "bg-gradient-steel text-primary-foreground hover:shadow-steel metal-shine",
-        copper: "bg-gradient-copper text-primary-foreground hover:shadow-copper metal-shine",
-        steel: "bg-steel-dark text-steel-light border-2 border-steel-medium hover:bg-steel-medium hover:border-copper transition-forge",
-        fire: "bg-fire-orange text-steel-dark hover:bg-copper hover:shadow-glow animate-forge-glow",
+        /* Green Black Yellow Variants */
+        forge: "bg-gradient-green text-primary-foreground hover:shadow-green metal-shine",
+        yellow: "bg-gradient-yellow text-primary-foreground hover:shadow-yellow metal-shine",
+        green: "bg-green-dark text-green-light border-2 border-green-medium hover:bg-green-medium hover:border-yellow transition-forge",
+        glow: "bg-yellow text-black hover:bg-yellow-dark hover:shadow-glow animate-forge-glow",
       },
       size: {
         default: "h-10 px-4 py-2",
