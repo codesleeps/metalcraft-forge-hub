@@ -14,7 +14,7 @@ const Index = () => {
       <ContactForm />
       
       {/* Footer */}
-      <footer className="bg-gradient-green text-white py-12">
+      <footer className="bg-gradient-green text-white py-12 border-t-4 border-black">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
@@ -44,7 +44,7 @@ const Index = () => {
               </div>
             </div>
           </div>
-          <div className="border-t border-yellow/30 mt-8 pt-8 text-center text-sm">
+          <div className="border-t-2 border-yellow/50 mt-8 pt-8 text-center text-sm">
             <p>&copy; 2024 MetalCraft Forge. All rights reserved. Built with precision and pride.</p>
           </div>
         </div>

@@ -105,7 +105,7 @@ const ContactForm = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-background">
+    <section id="contact" className="py-20 bg-background border-t-4 border-black">
       <div className="container mx-auto px-4 lg:px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -119,7 +119,7 @@ const ContactForm = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <Card className="p-8 shadow-steel">
+          <Card className="p-8 border-2 border-black shadow-glow">
             <h3 className="text-2xl font-bold text-foreground mb-6">Request Your Quote</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -227,7 +227,7 @@ const ContactForm = () => {
 
           {/* Contact Information */}
           <div className="space-y-8">
-            <div className="bg-primary rounded-2xl p-8 text-white">
+            <div className="bg-primary rounded-2xl p-8 text-white border-2 border-black shadow-glow">
               <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
               <p className="text-primary-foreground/80 mb-8">
                 Have questions? We're here to help. Reach out using any of the methods below 
@@ -252,7 +252,7 @@ const ContactForm = () => {
             </div>
 
             {/* Emergency Contact */}
-            <Card className="p-6 border-2 border-primary/20 bg-primary/5">
+            <Card className="p-6 border-2 border-black bg-primary/5 shadow-glow">
               <h4 className="text-xl font-bold text-foreground mb-3">Emergency Repairs</h4>
               <p className="text-muted-foreground mb-4">
                 Gate won't close? Fencing damaged? We offer 24/7 emergency repair services.

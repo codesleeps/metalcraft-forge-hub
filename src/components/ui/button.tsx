@@ -9,21 +9,20 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-black",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground border-2 border-black",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        /* Green Yellow Gradient Variants */
-        forge: "bg-gradient-primary text-white hover:shadow-glow metal-shine",
-        yellow: "bg-gradient-yellow text-black hover:shadow-yellow metal-shine",
-        green: "bg-gradient-green text-white hover:shadow-green metal-shine",
-        glow: "bg-gradient-secondary text-black hover:shadow-glow animate-forge-glow",
-        primary: "bg-gradient-primary text-white hover:bg-gradient-secondary transition-all duration-300",
+        /* Green Yellow Gradient Variants with Black Borders */
+        forge: "bg-gradient-primary text-white hover:shadow-glow metal-shine border-2 border-black",
+        yellow: "bg-gradient-yellow text-black hover:shadow-yellow metal-shine border-2 border-black",
+        green: "bg-gradient-green text-white hover:shadow-green metal-shine border-2 border-black",
+        glow: "bg-gradient-secondary text-black hover:shadow-glow animate-forge-glow border-2 border-black",
+        primary: "bg-gradient-primary text-white hover:bg-gradient-secondary transition-all duration-300 border-2 border-black",
       },
       size: {
         default: "h-10 px-4 py-2",

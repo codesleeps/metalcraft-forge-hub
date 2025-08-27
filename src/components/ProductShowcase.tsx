@@ -65,7 +65,7 @@ const ProductShowcase = () => {
   ];
 
   return (
-    <section id="products" className="py-20 bg-gradient-card">
+    <section id="products" className="py-20 bg-gradient-card border-t-4 border-b-4 border-black">
       <div className="container mx-auto px-4 lg:px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -81,7 +81,7 @@ const ProductShowcase = () => {
         {/* Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8">
           {products.map((product) => (
-            <Card key={product.id} className="group overflow-hidden hover:shadow-glow transition-all duration-500">
+            <Card key={product.id} className="group overflow-hidden hover:shadow-glow transition-all duration-500 border-2 border-black">
               {/* Product Image */}
               <div className="relative h-64 overflow-hidden">
                 <img 
@@ -132,7 +132,7 @@ const ProductShowcase = () => {
 
         {/* CTA Section */}
         <div className="text-center mt-16">
-          <div className="bg-gradient-primary rounded-2xl p-8 md:p-12 text-center shadow-glow">
+          <div className="bg-gradient-primary rounded-2xl p-8 md:p-12 text-center shadow-glow border-2 border-black">
             <h3 className="text-3xl font-bold text-white mb-4">
               Need Something Custom?
             </h3>

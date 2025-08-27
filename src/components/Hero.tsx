@@ -4,7 +4,7 @@ import heroWelding from "@/assets/hero-welding.jpg";
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden border-b-4 border-black">
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -40,7 +40,7 @@ const Hero = () => {
               </Button>
             </div>
 
-            <div className="grid grid-cols-3 gap-8 pt-12 border-t border-green-medium/30">
+            <div className="grid grid-cols-3 gap-8 pt-12 border-t-2 border-yellow/50">
               <div className="text-center">
                 <div className="flex items-center justify-center mb-2">
                   <Shield className="h-6 w-6 text-white mr-2" />

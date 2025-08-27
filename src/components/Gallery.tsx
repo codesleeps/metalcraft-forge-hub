@@ -33,7 +33,7 @@ const Gallery = () => {
   ];
 
   return (
-    <section id="gallery" className="py-20 bg-gradient-card">
+    <section id="gallery" className="py-20 bg-gradient-card border-t-4 border-b-4 border-black">
       <div className="container mx-auto px-4 lg:px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">
@@ -49,7 +49,7 @@ const Gallery = () => {
           {galleryItems.map((item) => (
             <Card 
               key={item.id} 
-              className="group overflow-hidden hover:shadow-glow transition-all duration-300 cursor-pointer"
+              className="group overflow-hidden hover:shadow-glow transition-all duration-300 cursor-pointer border-2 border-black"
             >
               <CardContent className="p-0">
                 <div className="aspect-[4/3] overflow-hidden">

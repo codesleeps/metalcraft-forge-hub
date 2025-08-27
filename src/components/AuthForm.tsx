@@ -132,7 +132,7 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
 
   return (
     <div className="absolute inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md p-8 relative">
+      <Card className="w-full max-w-md p-8 relative border-2 border-black shadow-glow">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
