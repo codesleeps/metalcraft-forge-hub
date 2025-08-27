@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@/components/ui/card";
-import jerkPanImage from "@/assets/jerk-pan.jpg";
 import customGateImage from "@/assets/custom-gate.jpg";
 import steelFencingImage from "@/assets/steel-fencing.jpg";
 import heroWeldingImage from "@/assets/hero-welding.jpg";
@@ -9,7 +8,7 @@ const Gallery = () => {
     {
       id: 1,
       title: "Custom Jerk Pan",
-      image: jerkPanImage,
+      image: "/lovable-uploads/f5143696-ec60-4cce-af11-908aac13226b.png",
       description: "Handcrafted traditional jerk pan with authentic design"
     },
     {
