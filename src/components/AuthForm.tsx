@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2, UserPlus, LogIn, Flame, AlertCircle } from "lucide-react";
+import { FcGoogle } from "react-icons/fc";
 
 interface AuthFormProps {
   onClose?: () => void;
@@ -143,6 +144,37 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    if (!isSupabaseAvailable) {
+      toast({
+        title: "Service Unavailable",
+        description: "Authentication service is currently unavailable. Please try again later.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setLoading(true);
+    
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/dashboard`,
+        },
+      });
+
+      if (error) throw error;
+    } catch (error) {
+      toast({
+        title: "Google sign in failed",
+        description: error instanceof Error ? error.message : "An error occurred",
+        variant: "destructive",
+      });
+      setLoading(false);
+    }
+  };
+
   return (
     <div className={onClose ? "absolute inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" : "flex items-center justify-center"}>
       <Card className="w-full max-w-md p-8 relative border-2 border-primary/20 shadow-glow bg-card">
@@ -175,6 +207,30 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
             </div>
           </div>
         )}
+
+        {/* Google Sign In Button */}
+        <Button
+          onClick={handleGoogleSignIn}
+          variant="outline"
+          className="w-full mb-6"
+          disabled={loading || !isSupabaseAvailable}
+        >
+          {loading ? (
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <FcGoogle className="mr-2 h-4 w-4" />
+          )}
+          Continue with Google
+        </Button>
+
+        <div className="relative mb-6">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t border-border" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-card px-2 text-muted-foreground">Or continue with email</span>
+          </div>
+        </div>
 
         <Tabs defaultValue="signin" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
