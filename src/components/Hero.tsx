@@ -32,7 +32,7 @@ const Hero = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-green-light max-w-2xl">
-              From premium jerk pans that elevate your BBQ game to custom gates and fencing 
+              From premium Jerk Pans that elevate your BBQ game to custom gates and fencing 
               that secure your property with style. Every piece forged with precision and pride.
             </p>
 
