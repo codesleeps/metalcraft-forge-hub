@@ -36,11 +36,56 @@ const Index = () => {
             <div>
               <h4 className="font-semibold text-white mb-4">Services</h4>
               <div className="space-y-2">
-                <p>Custom Jerk Pans</p>
-                <p>Decorative Gates</p>
-                <p>Steel Fencing</p>
-                <p>Metal Fabrication</p>
-                <p>Repairs & Restoration</p>
+                <a 
+                  href="#products" 
+                  className="block hover:text-yellow-dark transition-colors cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Custom Jerk Pans
+                </a>
+                <a 
+                  href="#products" 
+                  className="block hover:text-yellow-dark transition-colors cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Decorative Gates
+                </a>
+                <a 
+                  href="#products" 
+                  className="block hover:text-yellow-dark transition-colors cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Steel Fencing
+                </a>
+                <a 
+                  href="#contact" 
+                  className="block hover:text-yellow-dark transition-colors cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Metal Fabrication
+                </a>
+                <a 
+                  href="#contact" 
+                  className="block hover:text-yellow-dark transition-colors cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Repairs & Restoration
+                </a>
               </div>
             </div>
           </div>
