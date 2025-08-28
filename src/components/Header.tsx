@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -12,11 +13,19 @@ const Header = () => {
   const navigate = useNavigate();
 
   const navigation = [
-    { name: "Home", href: "#home" },
-    { name: "Products", href: "#products" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "home" },
+    { name: "Products", href: "products" },
+    { name: "Gallery", href: "gallery" },
+    { name: "Contact", href: "contact" },
   ];
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false); // Close mobile menu after navigation
+  };
 
   const handleSignOut = async () => {
     try {
@@ -48,13 +57,13 @@ const Header = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               {navigation.map((item) => (
-                <a
+                <button
                   key={item.name}
-                  href={item.href}
-                  className="text-foreground hover:text-primary transition-colors font-medium"
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-foreground hover:text-primary transition-colors font-medium cursor-pointer"
                 >
                   {item.name}
-                </a>
+                </button>
               ))}
               
               {user ? (
@@ -101,14 +110,13 @@ const Header = () => {
             <div className="md:hidden absolute top-16 left-0 right-0 bg-background border-b border-border shadow-steel">
               <div className="px-4 py-6 space-y-4">
                 {navigation.map((item) => (
-                  <a
+                  <button
                     key={item.name}
-                    href={item.href}
-                    className="block text-foreground hover:text-primary transition-colors font-medium py-2"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => scrollToSection(item.href)}
+                    className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
                   >
                     {item.name}
-                  </a>
+                  </button>
                 ))}
                 
                 {user ? (

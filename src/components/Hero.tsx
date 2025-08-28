@@ -1,8 +1,16 @@
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Award, Users } from "lucide-react";
 import heroWelding from "@/assets/hero-welding.jpg";
 
 const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden border-b-4 border-black">
       {/* Background Image with Overlay */}
@@ -29,14 +37,21 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-8">
-              <Button variant="primary" size="xl" className="group">
-                <a href="#products" className="flex items-center">
-                  View Our Work
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </a>
+              <Button 
+                variant="primary" 
+                size="xl" 
+                className="group"
+                onClick={() => scrollToSection('products')}
+              >
+                View Our Work
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="glow" size="xl">
-                <a href="#contact">Get Custom Quote</a>
+              <Button 
+                variant="glow" 
+                size="xl"
+                onClick={() => scrollToSection('contact')}
+              >
+                Get Custom Quote
               </Button>
             </div>
 

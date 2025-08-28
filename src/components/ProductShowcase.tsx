@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, ChefHat, Shield, Wrench } from "lucide-react";
@@ -5,6 +6,13 @@ import customGate from "@/assets/custom-gate.jpg";
 import steelFencing from "@/assets/steel-fencing.jpg";
 
 const ProductShowcase = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const products = [
     {
       id: "jerk-pans",
@@ -121,8 +129,12 @@ const ProductShowcase = () => {
                   ))}
                 </ul>
 
-                <Button variant="primary" className="w-full group">
-                  <a href="#contact">Request Quote</a>
+                <Button 
+                  variant="primary" 
+                  className="w-full group"
+                  onClick={() => scrollToSection('contact')}
+                >
+                  Request Quote
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>
@@ -140,8 +152,12 @@ const ProductShowcase = () => {
               We specialize in bringing your unique metalwork visions to life. 
               From concept to completion, we'll work with you every step of the way.
             </p>
-            <Button variant="yellow" size="xl">
-              <a href="#contact">Start Custom Project</a>
+            <Button 
+              variant="yellow" 
+              size="xl"
+              onClick={() => scrollToSection('contact')}
+            >
+              Start Custom Project
             </Button>
           </div>
         </div>
