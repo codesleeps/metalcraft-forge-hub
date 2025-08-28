@@ -19,10 +19,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isSupabaseAvailable, setIsSupabaseAvailable] = useState(false);
 
   useEffect(() => {
-    // Dynamically import Supabase to handle missing env vars gracefully
+    // Use the integrated Supabase client
     const initSupabase = async () => {
       try {
-        const { supabase: supabaseClient } = await import('@/lib/supabase');
+        const { supabase: supabaseClient } = await import('@/integrations/supabase/client');
         setSupabase(supabaseClient);
         setIsSupabaseAvailable(true);
       } catch (error) {

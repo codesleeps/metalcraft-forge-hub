@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -6,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 import { Loader2, UserPlus, LogIn, Flame, AlertCircle } from "lucide-react";
 
 interface AuthFormProps {
@@ -15,12 +17,14 @@ interface AuthFormProps {
 const AuthForm = ({ onClose }: AuthFormProps) => {
   const { toast } = useToast();
   const { isSupabaseAvailable } = useAuth();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     confirmPassword: "",
     fullName: "",
+    username: "",
   });
 
   const handleInputChange = (field: string, value: string) => {
@@ -60,13 +64,15 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
     setLoading(true);
     
     try {
-      const { supabase } = await import('@/lib/supabase');
+      const redirectUrl = `${window.location.origin}/`;
       const { error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
         options: {
+          emailRedirectTo: redirectUrl,
           data: {
             full_name: formData.fullName,
+            username: formData.username,
           },
         },
       });
@@ -78,7 +84,11 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
         description: "Please check your email to verify your account.",
       });
       
-      onClose?.();
+      if (onClose) {
+        onClose();
+      } else {
+        navigate("/");
+      }
     } catch (error) {
       toast({
         title: "Sign up failed",
@@ -105,7 +115,6 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
     setLoading(true);
     
     try {
-      const { supabase } = await import('@/lib/supabase');
       const { error } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password,
@@ -118,7 +127,11 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
         description: "You've successfully signed in.",
       });
       
-      onClose?.();
+      if (onClose) {
+        onClose();
+      } else {
+        navigate("/dashboard");
+      }
     } catch (error) {
       toast({
         title: "Sign in failed",
@@ -131,14 +144,16 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
   };
 
   return (
-    <div className="absolute inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md p-8 relative border-2 border-black shadow-glow">
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
-        >
-          ✕
-        </button>
+    <div className={onClose ? "absolute inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" : "flex items-center justify-center"}>
+      <Card className="w-full max-w-md p-8 relative border-2 border-primary/20 shadow-glow bg-card">
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            ✕
+          </button>
+        )}
 
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
@@ -228,6 +243,19 @@ const AuthForm = ({ onClose }: AuthFormProps) => {
                   onChange={(e) => handleInputChange("fullName", e.target.value)}
                   required
                   placeholder="Your full name"
+                  disabled={!isSupabaseAvailable}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="signup-username">Username</Label>
+                <Input
+                  id="signup-username"
+                  type="text"
+                  value={formData.username}
+                  onChange={(e) => handleInputChange("username", e.target.value)}
+                  required
+                  placeholder="Choose a username"
                   disabled={!isSupabaseAvailable}
                 />
               </div>
