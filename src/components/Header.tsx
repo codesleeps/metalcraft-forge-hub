@@ -1,14 +1,12 @@
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
-import AuthForm from "@/components/AuthForm";
 import { Menu, X, Flame, User, LogOut } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showAuthForm, setShowAuthForm] = useState(false);
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
@@ -86,9 +84,11 @@ const Header = () => {
                   </Button>
                 </div>
               ) : (
-                <Button onClick={() => setShowAuthForm(true)}>
-                  Sign In
-                </Button>
+                <Link to="/auth">
+                  <Button>
+                    Sign In
+                  </Button>
+                </Link>
               )}
             </div>
 
@@ -145,26 +145,20 @@ const Header = () => {
                     </Button>
                   </div>
                 ) : (
-                  <Button 
-                    className="w-full mt-4"
-                    onClick={() => {
-                      setShowAuthForm(true);
-                      setIsMenuOpen(false);
-                    }}
-                  >
-                    Sign In
-                  </Button>
+                  <Link to="/auth">
+                    <Button 
+                      className="w-full mt-4"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Sign In
+                    </Button>
+                  </Link>
                 )}
               </div>
             </div>
           )}
         </nav>
       </header>
-
-      {/* Auth Form Modal */}
-      {showAuthForm && (
-        <AuthForm onClose={() => setShowAuthForm(false)} />
-      )}
     </>
   );
 };
