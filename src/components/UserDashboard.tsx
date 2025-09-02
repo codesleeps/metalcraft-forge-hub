@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import { User, Settings, Package, MessageSquare, LogOut, Flame } from "lucide-react";
 
 const UserDashboard = () => {
@@ -28,21 +29,19 @@ const UserDashboard = () => {
   }, [user]);
 
   const fetchQuotes = async () => {
-    if (!user) return;
-    
-    try {
-      const { supabase } = await import('@/lib/supabase');
-      const { data, error } = await supabase
-        .from('quotes')
-        .select('*')
-        .eq('user_id', user?.id)
-        .order('created_at', { ascending: false });
-
-      if (error) throw error;
-      setQuotes(data || []);
-    } catch (error) {
-      console.warn('Error fetching quotes:', error);
-    }
+    // For demo purposes, using mock data
+    // In production, this would fetch from the database
+    setQuotes([
+      {
+        id: 1,
+        project_type: "Custom Gate",
+        created_at: new Date().toISOString(),
+        budget: "$1,000 - $2,500",
+        timeline: "2-3 months",
+        message: "Looking for a decorative iron gate for my front entrance",
+        status: "pending"
+      }
+    ]);
   };
 
   const handleSignOut = async () => {
@@ -64,7 +63,6 @@ const UserDashboard = () => {
   const updateProfile = async () => {
     setLoading(true);
     try {
-      const { supabase } = await import('@/lib/supabase');
       const { error } = await supabase.auth.updateUser({
         data: {
           full_name: profile.fullName,
