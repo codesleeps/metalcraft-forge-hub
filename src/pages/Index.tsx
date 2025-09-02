@@ -5,8 +5,6 @@ import Gallery from "@/components/Gallery";
 import ContactForm from "@/components/ContactForm";
 
 const Index = () => {
-  console.log('Index component rendering...');
-  
   return (
     <div className="min-h-screen bg-background">
       <Header />
