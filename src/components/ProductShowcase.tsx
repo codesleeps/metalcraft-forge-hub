@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { ArrowRight, ChefHat, Shield, Wrench } from "lucide-react";
 import customGate from "@/assets/custom-gate.jpg";
 import steelFencing from "@/assets/steel-fencing.jpg";
+import jerkPan from "@/assets/jerk-pan.jpg";
 
 const ProductShowcase = () => {
   const scrollToSection = (sectionId: string) => {
@@ -18,7 +19,7 @@ const ProductShowcase = () => {
       id: "jerk-pans",
       title: "Premium Jerk Pans",
       description: "Hand-forged steel jerk pans designed for authentic Caribbean BBQ. Built to withstand high heat and deliver exceptional cooking results.",
-      image: "/lovable-uploads/f5143696-ec60-4cce-af11-908aac13226b.png",
+      image: jerkPan,
       icon: ChefHat,
       features: [
         "High-grade steel construction",
@@ -32,7 +33,7 @@ const ProductShowcase = () => {
       id: "barrel-jerk-pans", 
       title: "Barrel Jerk Grills",
       description: "Large-capacity barrel-style jerk grills perfect for events and commercial use. Multiple cooking levels for maximum efficiency.",
-      image: "/lovable-uploads/e862bf8d-078f-4e9c-ac4e-87acde07ffc3.png",
+      image: jerkPan, // Using same image for now
       icon: ChefHat,
       features: [
         "Large cooking capacity",
