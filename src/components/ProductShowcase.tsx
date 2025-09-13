@@ -4,7 +4,12 @@ import { Card } from "@/components/ui/card";
 import { ArrowRight, ChefHat, Shield, Wrench } from "lucide-react";
 import customGate from "@/assets/custom-gate.jpg";
 import steelFencing from "@/assets/steel-fencing.jpg";
-import jerkPan from "@/assets/jerk-pan.jpg";
+import jerkPan from "@/assets/jerk-pan.webp";
+import jerkPanClosed from "@/assets/jerk-pan-closed.webp";
+import jerkpanSmoker from "@/assets/jerkpan-smoker.webp";
+import halfDrum from "@/assets/half-drum.webp";
+import roundGrill from "@/assets/round-grill.webp";
+import verticalSmoker from "@/assets/vertical-smoker.webp";
 
 const ProductShowcase = () => {
   const scrollToSection = (sectionId: string) => {
@@ -33,7 +38,7 @@ const ProductShowcase = () => {
       id: "barrel-jerk-pans", 
       title: "Barrel Jerk Grills",
       description: "Large-capacity barrel-style jerk grills perfect for events and commercial use. Multiple cooking levels for maximum efficiency.",
-      image: jerkPan, // Using same image for now
+      image: halfDrum,
       icon: ChefHat,
       features: [
         "Large cooking capacity",
@@ -44,32 +49,32 @@ const ProductShowcase = () => {
       price: "From $450"
     },
     {
-      id: "custom-gates",
-      title: "Custom Gates",
-      description: "Bespoke decorative gates that combine security with stunning craftsmanship. Each piece uniquely designed to match your vision.",
-      image: customGate,
-      icon: Shield,
+      id: "jerk-smokers",
+      title: "Jerk Pan Smokers",
+      description: "Professional-grade smokers with precise temperature control for authentic jerk flavoring and slow-cooking perfection.",
+      image: jerkpanSmoker,
+      icon: ChefHat,
       features: [
-        "Custom designs available",
-        "Wrought iron & steel options",
-        "Security-focused engineering",
-        "Weather-resistant finishes"
+        "Temperature control system",
+        "Smoke circulation design",
+        "Professional grade",
+        "Authentic jerk flavoring"
       ],
-      price: "From $800"
+      price: "From $650"
     },
     {
-      id: "steel-fencing",
-      title: "Steel Fencing",
-      description: "Durable and elegant fencing solutions for residential and commercial properties. Modern designs with uncompromising strength.",
-      image: steelFencing,
-      icon: Wrench,
+      id: "vertical-smokers",
+      title: "Vertical Smokers",
+      description: "Space-efficient vertical smokers with multiple racks for high-volume cooking while maintaining consistent heat distribution.",
+      image: verticalSmoker,
+      icon: ChefHat,
       features: [
-        "Modern industrial design",
-        "Heavy-duty construction",
-        "Custom height options",
-        "Professional installation"
+        "Multi-rack design",
+        "Space efficient",
+        "Consistent heat distribution",
+        "High-volume capacity"
       ],
-      price: "From $65/ft"
+      price: "From $850"
     }
   ];
 
@@ -92,11 +97,11 @@ const ProductShowcase = () => {
           {products.map((product) => (
             <Card key={product.id} className="group overflow-hidden hover:shadow-glow transition-all duration-500 border-2 border-black">
               {/* Product Image */}
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-64 overflow-hidden bg-gray-100 flex items-center justify-center">
                 <img 
                   src={product.image} 
                   alt={product.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-green-dark/80 to-transparent"></div>
                 <div className="absolute top-4 left-4">
