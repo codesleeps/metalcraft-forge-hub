@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { Menu, X, Flame, User, LogOut } from "lucide-react";
+import { scrollToSection } from "@/lib/scrollToSection";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,13 +18,7 @@ const Header = () => {
     { name: "Contact", href: "contact" },
   ];
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false); // Close mobile menu after navigation
-  };
+  
 
   const handleSignOut = async () => {
     try {
@@ -112,7 +107,7 @@ const Header = () => {
                 {navigation.map((item) => (
                   <button
                     key={item.name}
-                    onClick={() => scrollToSection(item.href)}
+                    onClick={() => { scrollToSection(item.href); setIsMenuOpen(false); }}
                     className="block w-full text-left text-foreground hover:text-primary transition-colors font-medium py-2"
                   >
                     {item.name}

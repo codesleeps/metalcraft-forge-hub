@@ -2,19 +2,19 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/acf7d36f-8b29-48dc-ab77-d1017c27cd02
+**URL**: <https://lovable.dev/projects/acf7d36f-8b29-48dc-ab77-d1017c27cd02>
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
 
-**Use Lovable**
+### Use Lovable
 
 Simply visit the [Lovable Project](https://lovable.dev/projects/acf7d36f-8b29-48dc-ab77-d1017c27cd02) and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
-**Use your preferred IDE**
+### Use your preferred IDE
 
 If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
@@ -36,13 +36,13 @@ npm i
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Edit a file directly in GitHub
 
 - Navigate to the desired file(s).
 - Click the "Edit" button (pencil icon) at the top right of the file view.
 - Make your changes and commit the changes.
 
-**Use GitHub Codespaces**
+### Use GitHub Codespaces
 
 - Navigate to the main page of your repository.
 - Click on the "Code" button (green button) near the top right.
@@ -70,7 +70,7 @@ Simply open [Lovable](https://lovable.dev/projects/acf7d36f-8b29-48dc-ab77-d1017
 - Live URL: `https://codesleeps.github.io/metalcraft-forge-hub/`
 - To prevent misconfiguration, run the Pages guard locally or in CI:
 
-```
+```sh
 npm run pages:guard     # checks Vite base, 404.html, and dist paths
 npm run build           # builds the site
 npm run pages:guard     # validates built artifact

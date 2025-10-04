@@ -10,14 +10,10 @@ import jerkpanSmoker from "@/assets/jerkpan-smoker.webp";
 import halfDrum from "@/assets/half-drum.webp";
 import roundGrill from "@/assets/round-grill.webp";
 import verticalSmoker from "@/assets/vertical-smoker.webp";
+import { scrollToSection } from "@/lib/scrollToSection";
 
 const ProductShowcase = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  
 
   const products = [
     {

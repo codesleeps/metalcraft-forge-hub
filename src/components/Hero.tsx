@@ -1,15 +1,10 @@
 
 import { Button } from "@/components/ui/button";
+import { scrollToSection } from "@/lib/scrollToSection";
 import { ArrowRight, Shield, Award, Users } from "lucide-react";
 import heroWelding from "@/assets/hero-welding.jpg";
 
 const Hero = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden border-b-4 border-black">
