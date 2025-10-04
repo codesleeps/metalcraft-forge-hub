@@ -34,10 +34,11 @@ describe('Header Component', () => {
     )
     
     expect(screen.getByText('MetalCraft Forge')).toBeInTheDocument()
-    expect(screen.getByText('Home')).toBeInTheDocument()
-    expect(screen.getByText('Products')).toBeInTheDocument()
-    expect(screen.getByText('Gallery')).toBeInTheDocument()
-    expect(screen.getByText('Contact')).toBeInTheDocument()
+    const desktopNav = screen.getByRole('navigation')
+    expect(within(desktopNav).getByRole('button', { name: 'Home' })).toBeInTheDocument()
+    expect(within(desktopNav).getByRole('button', { name: 'Products' })).toBeInTheDocument()
+    expect(within(desktopNav).getByRole('button', { name: 'Gallery' })).toBeInTheDocument()
+    expect(within(desktopNav).getByRole('button', { name: 'Contact' })).toBeInTheDocument()
   })
 
   it('shows sign in button when user is not authenticated', () => {
@@ -81,8 +82,9 @@ describe('Header Component', () => {
       </HeaderWrapper>
     )
     
-    expect(screen.getByText('Dashboard')).toBeInTheDocument()
-    expect(screen.getByText('Sign Out')).toBeInTheDocument()
+    const desktopNav = screen.getByRole('navigation')
+    expect(within(desktopNav).getByRole('button', { name: 'Dashboard' })).toBeInTheDocument()
+    expect(within(desktopNav).getByRole('button', { name: 'Sign Out' })).toBeInTheDocument()
   })
 
   it('toggles mobile menu when hamburger is clicked', () => {
@@ -96,7 +98,7 @@ describe('Header Component', () => {
     fireEvent.click(menuButton)
     
     // Mobile menu should be visible
-    const mobileNav = screen.getByTestId('mobile-nav')
+    const mobileNav = screen.getByRole('region', { name: 'Mobile navigation' })
     expect(mobileNav).toBeInTheDocument()
     expect(within(mobileNav).getByText('Home')).toBeInTheDocument()
   })

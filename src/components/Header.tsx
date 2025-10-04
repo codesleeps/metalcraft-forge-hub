@@ -53,7 +53,7 @@ const Header = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8" data-testid="desktop-nav">
+            <div className="hidden md:flex items-center space-x-8" role="region" aria-label="Desktop navigation">
               {navigation.map((item) => (
                 <button
                   key={item.name}
@@ -107,7 +107,7 @@ const Header = () => {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden absolute top-16 left-0 right-0 bg-background border-b border-border shadow-steel" data-testid="mobile-nav">
+            <div className="md:hidden absolute top-16 left-0 right-0 bg-background border-b border-border shadow-steel" role="region" aria-label="Mobile navigation">
               <div className="px-4 py-6 space-y-4">
                 {navigation.map((item) => (
                   <button
