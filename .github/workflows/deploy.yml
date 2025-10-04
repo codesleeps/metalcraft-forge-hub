@@ -31,11 +31,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Pages guard (pre-build)
+        run: npm run pages:guard
+
       - name: Run tests
         run: npm run test -- --run
 
       - name: Build project
         run: npm run build
+
+      - name: Pages guard (post-build)
+        run: npm run pages:guard
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

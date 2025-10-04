@@ -64,6 +64,21 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/acf7d36f-8b29-48dc-ab77-d1017c27cd02) and click on Share -> Publish.
 
+### GitHub Pages deployment (recommended)
+
+- CI runs tests and publishes the built site using official GitHub Pages Actions.
+- Live URL: `https://codesleeps.github.io/metalcraft-forge-hub/`
+- To prevent misconfiguration, run the Pages guard locally or in CI:
+
+```
+npm run pages:guard     # checks Vite base, 404.html, and dist paths
+npm run build           # builds the site
+npm run pages:guard     # validates built artifact
+```
+
+If the guard fails, update `vite.config.ts` so `base` matches the repo name
+(`/${repo}/`) and ensure `public/404.html` exists for SPA deep links.
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!
