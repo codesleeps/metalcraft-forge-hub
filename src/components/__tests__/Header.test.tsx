@@ -100,7 +100,7 @@ describe('Header Component', () => {
     // Mobile menu should be visible
     const mobileNav = screen.getByRole('region', { name: 'Mobile navigation' })
     expect(mobileNav).toBeInTheDocument()
-    expect(within(mobileNav).getByText('Home')).toBeInTheDocument()
+    expect(within(mobileNav).getByRole('button', { name: 'Home' })).toBeInTheDocument()
   })
 
   it('scrolls to section when navigation item is clicked', () => {
