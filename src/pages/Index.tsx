@@ -4,6 +4,8 @@ import About from "@/components/About";
 import ProductShowcase from "@/components/ProductShowcase";
 import Gallery from "@/components/Gallery";
 import ContactForm from "@/components/ContactForm";
+import { scrollToSection } from "@/lib/scrollToSection";
+import BackToTop from "@/components/BackToTop";
 
 const Index = () => {
   return (
@@ -14,6 +16,7 @@ const Index = () => {
       <ProductShowcase />
       <Gallery />
       <ContactForm />
+      <BackToTop />
 
       {/* Footer */}
       <footer className="bg-gradient-green text-white py-12 border-t-4 border-black">
@@ -34,25 +37,41 @@ const Index = () => {
               <div className="space-y-2">
                 <a
                   href="#home"
-                  className="block hover:text-yellow-dark transition-colors"
+                  className="block hover:text-yellow-dark transition-colors cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("home");
+                  }}
                 >
                   Home
                 </a>
                 <a
                   href="#products"
-                  className="block hover:text-yellow-dark transition-colors"
+                  className="block hover:text-yellow-dark transition-colors cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("products");
+                  }}
                 >
                   Products
                 </a>
                 <a
                   href="#gallery"
-                  className="block hover:text-yellow-dark transition-colors"
+                  className="block hover:text-yellow-dark transition-colors cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("gallery");
+                  }}
                 >
                   Gallery
                 </a>
                 <a
                   href="#contact"
-                  className="block hover:text-yellow-dark transition-colors"
+                  className="block hover:text-yellow-dark transition-colors cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("contact");
+                  }}
                 >
                   Contact
                 </a>
@@ -66,9 +85,7 @@ const Index = () => {
                   className="block hover:text-yellow-dark transition-colors cursor-pointer"
                   onClick={(e) => {
                     e.preventDefault();
-                    document
-                      .getElementById("products")
-                      ?.scrollIntoView({ behavior: "smooth" });
+                    scrollToSection("products");
                   }}
                 >
                   Custom Jerk Pans
@@ -78,9 +95,7 @@ const Index = () => {
                   className="block hover:text-yellow-dark transition-colors cursor-pointer"
                   onClick={(e) => {
                     e.preventDefault();
-                    document
-                      .getElementById("products")
-                      ?.scrollIntoView({ behavior: "smooth" });
+                    scrollToSection("products");
                   }}
                 >
                   Decorative Gates
@@ -90,9 +105,7 @@ const Index = () => {
                   className="block hover:text-yellow-dark transition-colors cursor-pointer"
                   onClick={(e) => {
                     e.preventDefault();
-                    document
-                      .getElementById("products")
-                      ?.scrollIntoView({ behavior: "smooth" });
+                    scrollToSection("products");
                   }}
                 >
                   Steel Fencing
@@ -102,9 +115,7 @@ const Index = () => {
                   className="block hover:text-yellow-dark transition-colors cursor-pointer"
                   onClick={(e) => {
                     e.preventDefault();
-                    document
-                      .getElementById("contact")
-                      ?.scrollIntoView({ behavior: "smooth" });
+                    scrollToSection("contact");
                   }}
                 >
                   Metal Fabrication
@@ -114,9 +125,7 @@ const Index = () => {
                   className="block hover:text-yellow-dark transition-colors cursor-pointer"
                   onClick={(e) => {
                     e.preventDefault();
-                    document
-                      .getElementById("contact")
-                      ?.scrollIntoView({ behavior: "smooth" });
+                    scrollToSection("contact");
                   }}
                 >
                   Repairs & Restoration

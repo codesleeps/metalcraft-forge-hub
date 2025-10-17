@@ -1,11 +1,13 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, within } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
-import { vi } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
+import type { User, Session } from '@supabase/supabase-js'
 import Header from '../Header'
-import { useAuth } from '@/hooks/useAuth'
+import { useAuth } from '../../hooks/useAuth'
+import '@testing-library/jest-dom/vitest'
 
 // Mock the useAuth hook
-vi.mock('@/hooks/useAuth')
+vi.mock('../../hooks/useAuth')
 const mockUseAuth = vi.mocked(useAuth)
 
 // Mock component wrapper
@@ -17,10 +19,10 @@ describe('Header Component', () => {
   beforeEach(() => {
     mockUseAuth.mockReturnValue({
       user: null,
+      session: null,
       signOut: vi.fn(),
-      signIn: vi.fn(),
-      signUp: vi.fn(),
-      loading: false
+      loading: false,
+      isSupabaseAvailable: true,
     })
   })
 
@@ -32,10 +34,11 @@ describe('Header Component', () => {
     )
     
     expect(screen.getByText('MetalCraft Forge')).toBeInTheDocument()
-    expect(screen.getByText('Home')).toBeInTheDocument()
-    expect(screen.getByText('Products')).toBeInTheDocument()
-    expect(screen.getByText('Gallery')).toBeInTheDocument()
-    expect(screen.getByText('Contact')).toBeInTheDocument()
+    const desktopNav = screen.getByRole('navigation')
+    expect(within(desktopNav).getByRole('button', { name: 'Home' })).toBeInTheDocument()
+    expect(within(desktopNav).getByRole('button', { name: 'Products' })).toBeInTheDocument()
+    expect(within(desktopNav).getByRole('button', { name: 'Gallery' })).toBeInTheDocument()
+    expect(within(desktopNav).getByRole('button', { name: 'Contact' })).toBeInTheDocument()
   })
 
   it('shows sign in button when user is not authenticated', () => {
@@ -45,16 +48,32 @@ describe('Header Component', () => {
       </HeaderWrapper>
     )
     
-    expect(screen.getByText('Sign In')).toBeInTheDocument()
+    expect(screen.getAllByRole('button', { name: 'Sign In' })[0]).toBeInTheDocument()
   })
 
   it('shows user menu when user is authenticated', () => {
+    const mockUser: Partial<User> = {
+      id: '1',
+      email: 'test@example.com',
+      user_metadata: { full_name: 'Test User' },
+      app_metadata: {},
+      aud: 'authenticated',
+      created_at: '2023-01-01T00:00:00Z',
+    }
+
+    const mockSession: Partial<Session> = {
+      user: mockUser as User,
+      access_token: 'mock-token',
+      token_type: 'bearer',
+      expires_in: 3600,
+    }
+
     mockUseAuth.mockReturnValue({
-      user: { id: '1', email: 'test@example.com', user_metadata: { full_name: 'Test User' } },
+      user: mockUser as User,
+      session: mockSession as Session,
       signOut: vi.fn(),
-      signIn: vi.fn(),
-      signUp: vi.fn(),
-      loading: false
+      loading: false,
+      isSupabaseAvailable: true,
     })
 
     render(
@@ -63,7 +82,9 @@ describe('Header Component', () => {
       </HeaderWrapper>
     )
     
-    expect(screen.getByText('Test User')).toBeInTheDocument()
+    const desktopNav = screen.getByRole('navigation')
+    expect(within(desktopNav).getByRole('button', { name: 'Dashboard' })).toBeInTheDocument()
+    expect(within(desktopNav).getByRole('button', { name: 'Sign Out' })).toBeInTheDocument()
   })
 
   it('toggles mobile menu when hamburger is clicked', () => {
@@ -73,17 +94,19 @@ describe('Header Component', () => {
       </HeaderWrapper>
     )
     
-    const menuButton = screen.getByRole('button', { name: /toggle menu/i })
+    const menuButton = screen.getAllByRole('button', { name: /toggle menu/i })[0]
     fireEvent.click(menuButton)
     
     // Mobile menu should be visible
-    expect(screen.getAllByText('Home')).toHaveLength(2) // Desktop + mobile
+    const mobileNav = screen.getByRole('region', { name: 'Mobile navigation' })
+    expect(mobileNav).toBeInTheDocument()
+    expect(within(mobileNav).getByRole('button', { name: 'Home' })).toBeInTheDocument()
   })
 
   it('scrolls to section when navigation item is clicked', () => {
     const mockScrollIntoView = vi.fn()
     const mockElement = { scrollIntoView: mockScrollIntoView }
-    vi.spyOn(document, 'getElementById').mockReturnValue(mockElement as any)
+    vi.spyOn(window.document, 'getElementById').mockReturnValue(mockElement as any)
 
     render(
       <HeaderWrapper>
@@ -91,7 +114,8 @@ describe('Header Component', () => {
       </HeaderWrapper>
     )
     
-    fireEvent.click(screen.getByText('Products'))
+    const homeButtons = screen.getAllByRole('button', { name: 'Home' })
+    fireEvent.click(homeButtons[0])
     expect(mockScrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' })
   })
 })
