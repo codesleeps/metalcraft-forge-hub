@@ -23,7 +23,7 @@ const ProductShowcase = () => {
     {
       id: "jerk-pans",
       title: "Premium Jerk Pans",
-      description: "Hand-forged steel jerk pans designed for authentic Caribbean BBQ. Built to withstand high heat and deliver exceptional cooking results.",
+      description: "Machine-forged steel jerk pans designed for authentic Caribbean BBQ. Built to withstand high heat and deliver exceptional cooking results.",
       image: jerkPan,
       icon: ChefHat,
       features: [
@@ -32,7 +32,7 @@ const ProductShowcase = () => {
         "Various sizes available",
         "Commercial-grade quality"
       ],
-      price: "From $150"
+      price: "From £250"
     },
     {
       id: "barrel-jerk-pans", 
@@ -46,7 +46,7 @@ const ProductShowcase = () => {
         "Heavy-duty construction",
         "Event & commercial ready"
       ],
-      price: "From $450"
+      price: "From £150"
     },
     {
       id: "jerk-smokers",
@@ -60,7 +60,7 @@ const ProductShowcase = () => {
         "Professional grade",
         "Authentic jerk flavoring"
       ],
-      price: "From $650"
+      price: "From £450"
     },
     {
       id: "vertical-smokers",
@@ -74,7 +74,7 @@ const ProductShowcase = () => {
         "Consistent heat distribution",
         "High-volume capacity"
       ],
-      price: "From $850"
+      price: "From £1850"
     }
   ];
 

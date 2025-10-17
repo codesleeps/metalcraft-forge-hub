@@ -63,7 +63,7 @@ const ContactForm = () => {
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+1 (555) 123-4567", "Mon-Fri 8AM-6PM"]
+      details: ["+44 call da Ras", "Mon-Fri 8AM-6PM"]
     },
     {
       icon: Mail,
@@ -73,12 +73,12 @@ const ContactForm = () => {
     {
       icon: MapPin,
       title: "Visit Our Shop",
-      details: ["123 Industrial Blvd", "Workshop City, WC 12345"]
+      details: ["Western Road Industrial Estate", "Birmingham, West Midlands"]
     },
     {
       icon: Clock,
       title: "Business Hours",
-      details: ["Mon-Fri: 8AM-6PM", "Sat: 9AM-3PM"]
+      details: ["Mon-Fri: 10AM-8PM", "Sat: 10AM-6PM"]
     }
   ];
 
@@ -133,7 +133,7 @@ const ContactForm = () => {
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => handleInputChange("phone", e.target.value)}
-                    placeholder="(555) 123-4567"
+                    placeholder="No Unknown Numbers"
                   />
                 </div>
                 <div className="space-y-2">
@@ -236,7 +236,7 @@ const ContactForm = () => {
                 Gate won't close? Fencing damaged? We offer 24/7 emergency repair services.
               </p>
               <Button variant="default" className="w-full">
-                Call Emergency Line: (555) 911-WELD
+                Call Emergency Line: call tomorrow morning
               </Button>
             </Card>
           </div>

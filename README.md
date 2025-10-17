@@ -1,73 +1,76 @@
-# Welcome to your Lovable project
+# Metalcraft Forge Hub
 
-## Project info
+A modern Vite + React + TypeScript site generated with Lovable. Showcases Metalcraft Forge products, gallery, contact/quote form and a user dashboard.
 
-**URL**: https://lovable.dev/projects/acf7d36f-8b29-48dc-ab77-d1017c27cd02
+## Quick start
 
-## How can I edit this code?
+Prerequisites:
+- Node.js 18+ (recommended)
+- npm
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/acf7d36f-8b29-48dc-ab77-d1017c27cd02) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Install and run locally:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# install deps
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# start dev server
 npm run dev
+
+# build for production
+npm run build
+
+# preview production build
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+## Project structure (important files)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `index.html` — app entry HTML
+- `package.json` — scripts & dependencies
+- `vite.config.ts` — Vite config
+- `tailwind.config.ts` — Tailwind setup
+- `tsconfig.json` — TypeScript config
+- `src/main.tsx` — React application bootstrap
+- `src/components/` — UI components (e.g. ProductShowcase, Gallery, ContactForm)
+- `public/` — static assets
+- `.github/workflows/deploy.yml` — GitHub Actions deploy to GitHub Pages
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
+## Technologies
 
 - Vite
 - TypeScript
 - React
-- shadcn-ui
 - Tailwind CSS
+- shadcn-ui / Radix UI primitives
+- GitHub Actions
 
-## How can I deploy this project?
+## Development notes
 
-Simply open [Lovable](https://lovable.dev/projects/acf7d36f-8b29-48dc-ab77-d1017c27cd02) and click on Share -> Publish.
+- Shared UI primitives live in `src/components/ui/`.
+- Pages/routes (if present) are under `src/pages/`.
+- Static assets are in `src/assets/` and `public/`.
+- App is mounted in `src/main.tsx`; HTML shell is `index.html`.
 
-## Can I connect a custom domain to my Lovable project?
+## Deploy
 
-Yes, you can!
+This repository includes a GitHub Actions workflow to publish `dist/` to GitHub Pages.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Manual deploy:
+- `npm run build`
+- Publish the `dist/` directory to your hosting provider.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Contributing
+
+- Fork, create a branch, make changes, open a pull request.
+- Follow existing Tailwind/shadcn-ui patterns.
+- Use `npm run dev` to test locally.
+
+## Troubleshooting
+
+- Check `tsconfig.json` and `vite.config.ts` if imports fail.
+- Ensure Tailwind is configured in `tailwind.config.ts` if styles don't update.
+
+## License & Contact
+
+See repository settings for license. Open an issue for feature requests or bugs.
