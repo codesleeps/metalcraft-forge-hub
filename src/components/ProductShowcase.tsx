@@ -28,7 +28,7 @@ const ProductShowcase = () => {
         "Various sizes available",
         "Commercial-grade quality"
       ],
-      price: "From £250"
+      price: "From £280"
     },
     {
       id: "barrel-jerk-pans", 
@@ -42,7 +42,7 @@ const ProductShowcase = () => {
         "Heavy-duty construction",
         "Event & commercial ready"
       ],
-      price: "From £150"
+      price: "From £175"
     },
     {
       id: "jerk-smokers",
@@ -70,7 +70,7 @@ const ProductShowcase = () => {
         "Consistent heat distribution",
         "High-volume capacity"
       ],
-      price: "From £1850"
+      price: "From £1950"
     }
   ];
 
