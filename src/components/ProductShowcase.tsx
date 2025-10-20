@@ -13,7 +13,7 @@ import verticalSmoker from "@/assets/vertical-smoker.webp";
 import { scrollToSection } from "@/lib/scrollToSection";
 
 const ProductShowcase = () => {
-  
+  // Updated to trigger GitHub Pages deployment
 
   const products = [
     {
