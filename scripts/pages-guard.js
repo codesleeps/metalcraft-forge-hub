@@ -8,8 +8,12 @@
     npm run pages:guard          # post-build checks (will also validate dist)
 */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function log(kind, msg) {
   const prefix = kind === 'error' ? '[pages-guard][ERROR]' : kind === 'warn' ? '[pages-guard][WARN]' : '[pages-guard]';
@@ -86,3 +90,5 @@ function main() {
 }
 
 main();
+
+export { log, getRepoName, readViteBase, check404, checkBase, checkDist, main };
